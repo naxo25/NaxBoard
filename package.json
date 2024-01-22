@@ -1,0 +1,24 @@
+{
+  "name": "NaxBoard",
+  "type": "module",
+  "productName": "NaxBoard",
+  "author": "Ignacio Labra <https://github.com/naxo25>",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "git": "brave-browser https://github.com/naxo25/NaxBoard",
+    "pag": "brave-browser https://nacholabraweb.000webhostapp.com/NaxBoard",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vue": "^4.0.8",
+    "astro": "^4.2.1",
+    "tailwindcss": "^3.4.1",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
+  }
+}
