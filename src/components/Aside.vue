@@ -1,6 +1,13 @@
 <template>
   <aside class="xl:block" aria-labelledby="sidebar-label">
-    <div class="xl:w-[336px] sticky top-6">
+    <div class="xl:w-[440px] mx-auto mr-0 sticky top-6">
+
+      <!-- Flowbite News -->
+      <div class="mb-8">
+        <h4 class="mb-2 text-sm font-bold text-gray-900 dark:text-white uppercase">Flowbite News morning headlines</h4>
+        <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">Get all the stories you need-to-know from the most powerful name in news delivered first thing every morning to your inbox</p>
+        <button type="button" data-modal-toggle="newsletter-modal" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 text-center w-full">Subscribe</button>
+      </div>
 
       <!-- Latest news -->
       <div class="mb-12">
@@ -35,13 +42,6 @@
             <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"> Read in 9 minutes </a>
           </div>
         </div>
-      </div>
-
-      <!-- Flowbite News -->
-      <div class="mb-8">
-        <h4 class="mb-2 text-sm font-bold text-gray-900 dark:text-white uppercase">Flowbite News morning headlines</h4>
-        <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">Get all the stories you need-to-know from the most powerful name in news delivered first thing every morning to your inbox</p>
-        <button type="button" data-modal-toggle="newsletter-modal" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 text-center w-full">Subscribe</button>
       </div>
 
       <!-- Ad placeholder -->

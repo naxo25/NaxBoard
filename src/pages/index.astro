@@ -1,7 +1,7 @@
 ---
 // Component Imports
 import Layout from '../layouts/MainLayout.vue';
-import ViewRouter from './Home.astro';
+import Home from './Home.astro';
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -18,11 +18,14 @@ import ViewRouter from './Home.astro';
 			body {
 				font-family: system-ui;
 				margin: 0;
+				::-webkit-scrollbar {
+					display: none;
+				}
 			}
 		</style>
 	</head>
-	<body class="bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800 text-slate-800 dark:text-slate-100">
+	<body id='app' class="bg-gradient-to-r h-screen from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800 text-slate-800 dark:text-slate-100">
 		<Layout />
-		<ViewRouter />
+		<Home />
 	</body>
 </html>
