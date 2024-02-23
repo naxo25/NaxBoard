@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   { path: '/Spaces', component: () => import('@/layouts/Spaces.vue') },
+  { path: '/Login', component: () => import('@/pages/Login.vue') },
   {
     path: '/', component: () => import('@/layouts/MainLayout.vue'),
     children: [

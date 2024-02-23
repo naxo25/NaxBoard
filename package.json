@@ -1,16 +1,16 @@
 {
-  "name": "vue-initial",
+  "name": "nax-Board",
   "private": true,
-  "version": "0.0.0",
-  "description": "Estructura de aplicación inicial para Vue",
-  "productName": "Vue Initial",
+  "version": "0.0.1",
+  "productName": "naxBoard",
   "author": "Ignacio Labra <https://github.com/naxo25>",
   "type": "module",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview",
-    "git": "brave-browser https://github.com/naxo25/Vue-initial",
+    "pag": "brave-browser https://nacholabraweb.000webhostapp.com/NaxBoard/",
+    "git": "brave-browser https://github.com/naxo25/naxBoard",
     "test": "vitest",
     "format": "prettier --write src/",
     "lint": "npx standard --fix"

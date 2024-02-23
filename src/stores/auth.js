@@ -1,11 +1,11 @@
-// import { router } from '../router.js'
+import { router } from '../router.js'
 import { supabase } from './supabase.js'
 import Store from './store.js'
 
 export const signOut = async () => {
   await supabase.auth.signOut()
-  // localStorage.space = ''
-  // router.push('/login')
+  localStorage.space = ''
+  router.push('/login')
 }
 
 export const login = async ({ email, password }) => {
@@ -16,6 +16,7 @@ export const login = async ({ email, password }) => {
 
   if (error)
     return
+
   location.reload()
 }
 
@@ -35,14 +36,14 @@ const getUsers = async email => {
     const localSpace = data[0].space[0]
     console.log("localSpace", localSpace)
     // localStorage.space ? JSON.parse(localStorage.space) : 
-    // const validatelocalSpace = async () => await data[0].space.find(item => item === localSpace.identifier) 
+    const validatelocalSpace = async () => await data[0].space.find(item => item === localSpace.identifier) 
 
-      getSpace(localSpace)
-    // if (await validatelocalSpace())
-    // else {
-      // localStorage.space = ''
-      // router.push('/')
-    // }
+    getSpace(localSpace)
+    if (await validatelocalSpace()) {
+    } else {
+      localStorage.space = ''
+      router.push('/')
+    }
 
     const { data: responseS, error: errorS } = await supabase.from('space').select().in('identifier', data[0].space)
 

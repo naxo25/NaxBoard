@@ -310,7 +310,9 @@
 		</div>
 	</nav>
 
-	<viewRouter />
+	<main class='mx-auto pr-80'>
+		<routerView/>
+	</main>
 </template>
 
 <script setup>
