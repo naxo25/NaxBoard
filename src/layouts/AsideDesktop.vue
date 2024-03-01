@@ -1,6 +1,6 @@
 <template>
-	<aside id="sidebar" class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden w-64 h-full pt-16 font-normal duration-75 lg:flex transition-width" aria-label="Sidebar">
-		<div class="relative flex flex-col flex-1 min-h-0 pt-0">
+	<aside :class="showMenu ? '' : 'hidden'" id="sidebar" class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 w-64 h-full pt-16 font-normal duration-75 lg:flex transition-width" aria-label="Sidebar">
+		<div class="relative flex flex-col flex-1 min-h-0 pt-0 dark:bg-gray-800 dark:border-gray-700 lg:dark:bg-transparent">
 			<div class="flex flex-col flex-1 pt-5 pb-28 overflow-y-auto scrollbar scrollbar-w-2 scrollbar-thumb-rounded-[0.1667rem] scrollbar-thumb-slate-200 scrollbar-track-gray-400 dark:scrollbar-thumb-slate-900 dark:scrollbar-track-gray-800">
 				<div class="flex-1 px-3 space-y-1  divide-y divide-gray-200  dark:divide-gray-700">
 					<ul class="pb-2 space-y-2">
@@ -75,5 +75,8 @@
   import { getSpace, signOut } from '@/stores/auth.js'
 	import Store from '../stores/store.js'
 	import { ref } from 'vue'
-	const name = ref(123123)
+	
+	const props = defineProps({
+	  showMenu: Boolean
+	})
 </script>
