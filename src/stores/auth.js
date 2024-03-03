@@ -3,9 +3,9 @@ import { supabase } from './supabase.js'
 import Store from './store.js'
 
 export const signOut = async () => {
+  router.push('/login')
   await supabase.auth.signOut()
   localStorage.space = ''
-  router.push('/login')
 }
 
 export const login = async ({ email, password }) => {
@@ -17,7 +17,7 @@ export const login = async ({ email, password }) => {
   if (error)
     return
 
-  location.reload()
+  // location.reload()
 }
 
 const getUsers = async email => {
@@ -31,14 +31,10 @@ const getUsers = async email => {
     }
 
     Store.spaces = data[0].space;
-    console.log("Store.spaces", Store.spaces)
-
     const localSpace = data[0].space[0]
-    console.log("localSpace", localSpace)
     // localStorage.space ? JSON.parse(localStorage.space) : 
     const validatelocalSpace = async () => await data[0].space.find(item => item === localSpace.identifier) 
 
-    getSpace(localSpace)
     if (await validatelocalSpace()) {
     } else {
       localStorage.space = ''
@@ -60,14 +56,25 @@ const getUsers = async email => {
 }
 
 let noReload = false
-export const onHandle = () => {
+export const onHandle = async () => {
+  const { data, error } = await supabase.from('app_updates')
+    .select()
+    .eq('app_name', 'NaxBoard')
+
+  const updateVersion = data[0].update;
+
+  if (localStorage.updateVersion !== updateVersion) {
+    location.reload()
+    localStorage.updateVersion = updateVersion
+  }
+
   supabase.auth.onAuthStateChange(async (event, session) => {
     if (noReload)
       return
 
-    console.log("session", session)
     if (!session) {
-      login({ email: 'test@gmail.com', password: '123zxcoag82nasd' })
+      router.push('/login')
+    //   login({ email: 'test@gmail.com', password: '123zxcoag82nasd' })
       return
     }
 
@@ -76,9 +83,10 @@ export const onHandle = () => {
   })
 };
 
-export const getSpace = async space => {
-  console.log("space", space)
+export const getSpace = async identifier => {
+  console.log("identifier", identifier)
   Store.loader = true
+  router.push('/')
   // router.push('/space/' + space.identifier)
   // localStorage.space = JSON.stringify(space)
 
@@ -86,27 +94,24 @@ export const getSpace = async space => {
   //   return
 
   // order('last_update', { ascending: false })
-  const { data: response, error } = await supabase.from('tasks')
+  // Antes
+
+  const { data: response, error } = await supabase.from('space')
     .select()
-    .eq('name', space)
-    .order('last_update') //.limit(limit.value)
-
+    .eq('identifier', identifier)
+    // .order('last_update') //.limit(limit.value)
+  
+  // const response = Store.spaces.find(a => a.identifier === identifier)
   console.log("response", response)
-  if (error) {
-    if (!import.meta.env.DEV)
-      // router.push('/')
-    return
-  }
 
-  if (!response.length) {
+  if (!response) {
     Store.tasks = []
-    Store.docs = []
   } else {
-    Store.tasks = response[0].subtasks;
-    Store.docs = response[0].docs;
+    Store.tasks = response[0].tasks;
   }
+    console.log("Store.tasks", Store.tasks)
 
-  Store.selectSpace = space
+  Store.selectSpace = identifier
   setTimeout(() => {
     Store.loader = false
   }, 250)

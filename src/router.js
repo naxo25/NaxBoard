@@ -7,7 +7,7 @@ const routes = [
     path: '/', component: () => import('@/layouts/MainLayout.vue'),
     children: [
       { path: '/', component: () => import('@/pages/Home.vue') },
-      { path: '/Task', component: () => import('@/pages/Task.vue') }
+      { path: '/Task/ahz:id', component: () => import('@/pages/Task.vue') }
     ]
   },
 

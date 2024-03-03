@@ -1,5 +1,5 @@
 <script setup>
-	import Comments from '../components/Comments.vue';
+	import Tasks from '../components/Tasks.vue';
 	import Aside from '../components/Aside.vue';
 	// import Statistics from '../components/Statistics.vue';
 	// import Card from '../components/Card.vue';
@@ -14,7 +14,7 @@
 				<div class="px-2">
 					<div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
 						<!-- <Card /> -->
-						<Comments />
+						<Tasks />
 						<Aside />
 					</div>
 					<div class='grid grid-cols-1 my-4 xl:grid-cols-2 xl:gap-4'>

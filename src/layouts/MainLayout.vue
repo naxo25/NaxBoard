@@ -168,7 +168,7 @@
 	</nav>
 
 	<!-- Desktop -->
-	<AsideDesktop :showMenu />
+	<AsideDesktop :showMenu @showMenuClick='showMenu = false' />
 
 	<main class='lg:mr-10'>
 		<routerView/>
