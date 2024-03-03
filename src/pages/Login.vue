@@ -20,10 +20,13 @@
                       <input v-model="password" type="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" required="">
                   </div>
                   <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Log in to your account</button>
+              </form>
+                  <p class="text-sm font-light text-center text-sky-500 dark:text-sky-300">
+                        <a @click="login({ email: 'test@gmail.com', password: '123zxcoag82nasd' })" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Log in in the test account</a>
+                  </p>
                   <p class="text-sm font-light text-center text-gray-500 dark:text-gray-300">
                         <a @click='al' class="font-medium text-primary-600 hover:underline dark:text-primary-500">Don't have an account?</a>
                   </p>
-              </form>
           </div>
       </div>
   </div>

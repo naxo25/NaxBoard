@@ -179,8 +179,18 @@
 	import { signOut } from '@/stores/auth'
   import AsideDesktop from './AsideDesktop.vue'
 	import { ref } from 'vue'
+	import Toastify from 'toastify-js'
+	import "toastify-js/src/toastify.css"
 
 	const showMenu = ref(false)
 	const Notifications = ref(false)
 	const Apps = ref(false)
+
+	window.Notification = (msg) => Toastify({
+	  	text: msg,
+	  	className: "info",
+	  	style: {
+	  		background: "linear-gradient(to right, #00b09b, #96c93d)",
+	  	}
+	  }).showToast();
 </script>
