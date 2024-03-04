@@ -84,7 +84,6 @@ export const onHandle = async () => {
 };
 
 export const getSpace = async identifier => {
-  console.log("identifier", identifier)
   Store.loader = true
   router.push('/')
   // router.push('/space/' + space.identifier)
@@ -102,14 +101,12 @@ export const getSpace = async identifier => {
     // .order('last_update') //.limit(limit.value)
   
   // const response = Store.spaces.find(a => a.identifier === identifier)
-  console.log("response", response)
 
   if (!response) {
     Store.tasks = []
   } else {
     Store.tasks = response[0].tasks;
   }
-    console.log("Store.tasks", Store.tasks)
 
   Store.selectSpace = identifier
   setTimeout(() => {

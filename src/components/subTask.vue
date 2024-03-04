@@ -3,13 +3,13 @@
 		<div class="flex mb-4 flex-col lg:flex-row justify-between lg:items-center">
 			<div class="flex items-center space-x-3 text-gray-500 dark:text-gray-400 text-base mb-2 lg:mb-0">
 				<span>
-					<button @click="$router.back" class="text-gray-900 dark:text-white hover:underline no-underline font-semibold">
+					<button @click="$router.back" class="text-gray-900 line-clamp-1 dark:text-white hover:underline no-underline font-semibold">
 						{{ Store.selectSpace}}
 					</button>
 					</span>
 					<span class="bg-gray-300 dark:bg-gray-400 w-2 h-2 rounded-full"></span>
 					<span>
-						<time class="font-normal text-gray-500 dark:text-gray-400" pubdate="" datetime="2022-03-08" title="August 3rd, 2022">
+						<time class="font-normal text-gray-500 line-clamp-1 dark:text-gray-400" pubdate="" datetime="2022-03-08" title="August 3rd, 2022">
 							{{ TaskSelect.name }}
 						</time>
 					</span>
@@ -45,7 +45,7 @@
 		<section class="antialiased">
 			<div class="py-1">
 				<div class="flex justify-between items-center">
-					<h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
+					<h2 class="text-lg lg:text-2xl line-clamp-1 font-bold text-gray-900 dark:text-white">
 						{{ TaskSelect.name }}
 					</h2>
 					<button @click='cp(TaskSelect)' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
