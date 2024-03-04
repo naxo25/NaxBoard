@@ -23,17 +23,19 @@ export const login = async ({ email, password }) => {
 const getUsers = async email => {
   const { data, error } = await supabase
     .from('users')
-    .select('space')
+    .select('space, image')
     .eq('email', email) // Filters
 
     if (error) {
       return
     }
 
-    Store.spaces = data[0].space;
-    const localSpace = data[0].space[0]
+    const { space, image } = data[0]
+
+    Store.spaces = space;
+    const localSpace = space[0]
     // localStorage.space ? JSON.parse(localStorage.space) : 
-    const validatelocalSpace = async () => await data[0].space.find(item => item === localSpace.identifier) 
+    const validatelocalSpace = async () => await space.find(item => item === localSpace.identifier) 
 
     if (await validatelocalSpace()) {
     } else {
@@ -41,7 +43,7 @@ const getUsers = async email => {
       router.push('/')
     }
 
-    const { data: responseS, error: errorS } = await supabase.from('space').select().in('identifier', data[0].space)
+    const { data: responseS, error: errorS } = await supabase.from('space').select().in('identifier', space)
 
     if (errorS) {
       return
@@ -52,6 +54,9 @@ const getUsers = async email => {
       Store.spaces[id] = { identifier, logo, countTasks }
     })
 
+    Store.user = {
+      image: image || './noimg.webp'
+    }
     Store.loader = false
 }
 
