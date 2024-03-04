@@ -123,16 +123,19 @@
   import { ref } from 'vue'
 
   const TaskSelect = ref(Store.tasks[Store.TaskSelectPos])
-  const OptionsExtras = ref()
+  const OptionsExtras = ref([])
+
+  if (!TaskSelect.value.subTasks)
+  	TaskSelect.value.subTasks = []
+
+  if (Store.selectSpace === 'Historys') {
+  	OptionsExtras.value = [{"name": "Gnosis, conocimiento para el despertar de la conciencia" }]
+  }
 
   const cp = item => {
 		let desc = ''
 		item.desc?.split(/\r?\n/).forEach(item => desc += `\n${item}`)
 	  navigator.clipboard.writeText(`${item.name}${desc}`)
 	  Notification("Contenido copiado al portapapeles.")
-  }
-
-  if (Store.selectSpace === 'Historys') {
-  	OptionsExtras.value = [{"name": "Gnosis, conocimiento para el despertar de la conciencia" }]
   }
 </script>
