@@ -1,12 +1,19 @@
 <template>
 	<article class="px-4 rounded-lg 2xl:col-span-2 sm:px-6">
 		<div class="flex mb-4 flex-col lg:flex-row justify-between lg:items-center">
-			<div class="flex items-center space-x-3 text-gray-500 dark:text-gray-400 text-base mb-2 lg:mb-0"><span>By <a
-						href="#" class="text-gray-900 dark:text-white hover:underline no-underline font-semibold">Jese
-						Leos</a></span><span
-					class="bg-gray-300 dark:bg-gray-400 w-2 h-2 rounded-full"></span><span><time
-						class="font-normal text-gray-500 dark:text-gray-400" pubdate="" datetime="2022-03-08"
-						title="August 3rd, 2022"> August 3, 2022, 2:20am EDT </time></span></div>
+			<div class="flex items-center space-x-3 text-gray-500 dark:text-gray-400 text-base mb-2 lg:mb-0">
+				<span>
+					<button @click="$router.back" class="text-gray-900 dark:text-white hover:underline no-underline font-semibold">
+						{{ Store.selectSpace}}
+					</button>
+					</span>
+					<span class="bg-gray-300 dark:bg-gray-400 w-2 h-2 rounded-full"></span>
+					<span>
+						<time class="font-normal text-gray-500 dark:text-gray-400" pubdate="" datetime="2022-03-08" title="August 3rd, 2022">
+							{{ TaskSelect.name }}
+						</time>
+					</span>
+				</div>
 			<aside aria-label="Share social media">
 				<div class="not-format">
 					<button data-tooltip-target="tooltip-link"
@@ -53,7 +60,7 @@
 				</time>
 			</p>
 
-				<article class="py- cursor-pointer text-base rounded-lg ml-1">
+				<article class="py- cursor-pointer text-base rounded-lg lg:ml-1">
 					<footer class="flex justify-between items-center mb-2">
 					</footer>
 
@@ -61,7 +68,7 @@
 						{{ TaskSelect.desc }}
 					</p>
 
-					<article v-for="item in TaskSelect.subTasks" class="pl-1 mb-5">
+					<article v-for="item in [...TaskSelect.subTasks, ...OptionsExtras]" class="lg:pl-1 mb-5">
 						<footer class="flex items-center justify-between mb-2">
 							<p class="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
 								{{ item.name }}
@@ -81,16 +88,20 @@
 						</p>
 					</article>
 
-					<div class="flex pl-1.5 items-center mb-5"><textarea id="chat" rows="1"
+					<div class="flex lg:pl-1 items-center mb-5">
+						<textarea id="chat" rows="1"
 							class="block mr-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-							placeholder="Agregar subtarea"></textarea><button type="submit"
+							placeholder="Agregar subtarea"></textarea>
+							<button type="submit"
 							class="inline-flex justify-center p-2 rounded-lg cursor-pointer text-primary-600 hover:bg-primary-100 dark:text-primary-500 dark:hover:bg-gray-600"><svg
 								aria-hidden="true" class="w-6 h-6 rotate-90" fill="currentColor" viewBox="0 0 20 20"
 								xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
 								</path>
-							</svg><span class="sr-only">Send message</span></button></div>
+							</svg><span class="sr-only">Send message</span>
+						</button>
+					</div>
 				</article>
 
 				<form class="mb-6">
@@ -112,11 +123,16 @@
   import { ref } from 'vue'
 
   const TaskSelect = ref(Store.tasks[Store.TaskSelectPos])
+  const OptionsExtras = ref()
 
   const cp = item => {
 		let desc = ''
 		item.desc?.split(/\r?\n/).forEach(item => desc += `\n${item}`)
 	  navigator.clipboard.writeText(`${item.name}${desc}`)
 	  Notification("Contenido copiado al portapapeles.")
+  }
+
+  if (Store.selectSpace === 'Historys') {
+  	OptionsExtras.value = [{"name": "Gnosis, conocimiento para el despertar de la conciencia" }]
   }
 </script>

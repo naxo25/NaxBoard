@@ -7,12 +7,12 @@
 }
 
 section {
-  animation: animation .5s;
+  animation: animation .8s;
 }
 
 @keyframes animation {
   0% {
-    opacity: .4;
+    opacity: .2;
   }
   100% {
     opacity: 1;

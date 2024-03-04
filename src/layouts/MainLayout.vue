@@ -168,7 +168,7 @@
 	</nav>
 
 	<!-- Desktop -->
-	<AsideDesktop :showMenu @showMenuClick='showMenu = false' />
+	<Menu :showMenu @showMenuClick='showMenu = false' />
 
 	<main class='lg:mr-10'>
 		<routerView/>
@@ -177,7 +177,7 @@
 
 <script setup>
 	import { signOut } from '@/stores/auth'
-  import AsideDesktop from './AsideDesktop.vue'
+  import Menu from './Menu.vue'
 	import { ref } from 'vue'
 	import Toastify from 'toastify-js'
 	import "toastify-js/src/toastify.css"
@@ -190,7 +190,8 @@
 	  	text: msg,
 	  	className: "info",
 	  	style: {
-	  		background: "linear-gradient(to right, #00b09b, #96c93d)",
+	  		background: '#000'
+	  		// background: "linear-gradient(to right, #00b09b, #96c93d)",
 	  	}
 	  }).showToast();
 </script>
