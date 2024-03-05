@@ -5,7 +5,7 @@ import Store from './store.js'
 export const signOut = async () => {
   router.push('/login')
   await supabase.auth.signOut()
-  localStorage.space = ''
+  localStorage.identifier = ''
 }
 
 export const login = async ({ email, password }) => {
@@ -33,14 +33,13 @@ const getUsers = async email => {
     const { space, image } = data[0]
 
     Store.spaces = space;
-    const localSpace = space[0]
-    // localStorage.space ? JSON.parse(localStorage.space) : 
-    const validatelocalSpace = async () => await space.find(item => item === localSpace.identifier) 
+    const findSpace = space.find(item => item === localStorage.identifier) 
 
-    if (await validatelocalSpace()) {
+    if (findSpace) {
+      console.log("findSpace", findSpace)
+      getSpace(localStorage.identifier)
     } else {
-      localStorage.space = ''
-      router.push('/')
+      localStorage.identifier = ''
     }
 
     const { data: responseS, error: errorS } = await supabase.from('space').select().in('identifier', space)
@@ -90,9 +89,8 @@ export const onHandle = async () => {
 
 export const getSpace = async identifier => {
   Store.loader = true
-  router.push('/')
   // router.push('/space/' + space.identifier)
-  // localStorage.space = JSON.stringify(space)
+  localStorage.identifier = identifier
 
   // if (noRemplaceTasks.value)
   //   return
