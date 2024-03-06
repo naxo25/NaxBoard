@@ -7,10 +7,13 @@ const routes = [
     path: '/', component: () => import('@/layouts/MainLayout.vue'),
     children: [
       { path: '/', component: () => import('@/pages/Home.vue') },
-      { path: '/Task/ahz:id', component: () => import('@/pages/Task.vue') }
+      { path: '/Task/:pos', props: true, component: () => import('@/pages/Task.vue') },
+
     ]
   },
 
+  { path: '/test/', component: () => import('@/pages/test.vue') },
+  { path: '/test/:pos', props: true, component: () => import('@/pages/test.vue') },
   {
     path: '/:catchAll(.*)*',
     component: () => import('@/views/404.vue')

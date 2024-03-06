@@ -4,6 +4,9 @@
 	// import Statistics from '../components/Statistics.vue';
 	// import Card from '../components/Card.vue';
 	// import Carrousel from '../components/Carrousel.vue';
+	const props = defineProps({
+	  pos: String
+	})
 </script>
 
 <template>
@@ -14,7 +17,7 @@
 				<div class="px-2">
 					<div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
 						<!-- <Card /> -->
-						<subTask />
+						<subTask :pos />
 						<Aside />
 					</div>
 					<div class='grid grid-cols-1 my-4 xl:grid-cols-2 xl:gap-4'>

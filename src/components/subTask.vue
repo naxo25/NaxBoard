@@ -1,54 +1,54 @@
 <template>
 	<article class="px-4 rounded-lg 2xl:col-span-2 sm:px-6">
-		<div class="flex mb-4 flex-col lg:flex-row justify-between lg:items-center">
-			<div class="flex items-center space-x-3 text-gray-500 dark:text-gray-400 text-base mb-2 lg:mb-0">
+		<div class="flex mb-4 flex-col">
+			<div class="flex w-full items-center justify-between lg:justify-start space-x-3 text-gray-500 dark:text-gray-400 text-base mb-2 lg:mb-0">
 				<span>
 					<button @click="$router.back" class="text-gray-900 line-clamp-1 dark:text-white hover:underline no-underline font-semibold">
 						{{ Store.selectSpace}}
 					</button>
-					</span>
-					<span class="bg-gray-300 dark:bg-gray-400 w-2 h-2 rounded-full"></span>
-					<span>
-						<time class="font-normal text-gray-500 line-clamp-1 dark:text-gray-400" pubdate="" datetime="2022-03-08" title="August 3rd, 2022">
-							{{ TaskSelect.name }}
-						</time>
-					</span>
-				</div>
-			<aside aria-label="Share social media">
-				<div class="not-format">
-					<button data-tooltip-target="tooltip-link"
-						class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-						type="button"><svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 19 19">
-							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M11.013 7.962a3.519 3.519 0 0 0-4.975 0l-3.554 3.554a3.518 3.518 0 0 0 4.975 4.975l.461-.46m-.461-4.515a3.518 3.518 0 0 0 4.975 0l3.553-3.554a3.518 3.518 0 0 0-4.974-4.975L10.3 3.7">
-							</path>
-						</svg>
-					</button>
-					<button data-tooltip-target="tooltip-save"
-						class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-						type="button"><svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 20">
-							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="m13 19-6-5-6 5V2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17Z"></path>
-						</svg>
-					</button>
+				</span>
+				<span class="hidden lg:block bg-gray-300 dark:bg-gray-400 w-2 h-2 rounded-full"></span>
+				<span class='hidden lg:block'>
+					<time class="font-normal text-gray-500 line-clamp-1 dark:text-gray-400" pubdate="" datetime="2022-03-08" title="August 3rd, 2022">
+						{{ Store.tasks[Store.TaskSelectPos].name }}
+					</time>
+				</span>
+				<aside aria-label="Share social media">
+					<div class="not-format">
+						<button data-tooltip-target="tooltip-link"
+							class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+							type="button"><svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
+								xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 19 19">
+								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M11.013 7.962a3.519 3.519 0 0 0-4.975 0l-3.554 3.554a3.518 3.518 0 0 0 4.975 4.975l.461-.46m-.461-4.515a3.518 3.518 0 0 0 4.975 0l3.553-3.554a3.518 3.518 0 0 0-4.974-4.975L10.3 3.7">
+								</path>
+							</svg>
+						</button>
+						<button data-tooltip-target="tooltip-save"
+							class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+							type="button"><svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
+								xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 20">
+								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="m13 19-6-5-6 5V2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17Z"></path>
+							</svg>
+						</button>
 
-					<button @click="$router.back" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-						type="button">
-						<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 dark:text-gray-400" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
-					</button>
-				</div>
-			</aside>
+						<button @click="$router.back" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+							type="button">
+							<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 dark:text-gray-400" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
+						</button>
+					</div>
+				</aside>
+			</div>
 		</div>
 
 		<section class="antialiased">
 			<div class="py-1">
 				<div class="flex justify-between items-center">
 					<h2 class="text-lg lg:text-2xl line-clamp-1 font-bold text-gray-900 dark:text-white">
-						{{ TaskSelect.name }}
+						{{ Store.tasks[Store.TaskSelectPos].name }}
 					</h2>
-					<button @click='cp(TaskSelect)' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+					<button @click='cp(Store.tasks[Store.TaskSelectPos])' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
 					type="button">
 					<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path></svg>
 				</button>
@@ -65,10 +65,10 @@
 					</footer>
 
 					<p class="text-gray-900 dark:text-white">
-						{{ TaskSelect.desc }}
+						{{ Store.tasks[Store.TaskSelectPos].desc }}
 					</p>
 
-					<article v-for="item in [...TaskSelect.subTasks, ...OptionsExtras]" class="lg:pl-1 mb-5">
+					<article v-for="item in [...Store.tasks[Store.TaskSelectPos]?.subTasks || [], ...OptionsExtras]" class="lg:pl-1 mb-5">
 						<footer class="flex items-center justify-between mb-2">
 							<p class="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
 								{{ item.name }}
@@ -122,11 +122,14 @@
   import Store from '../stores/store.js'
   import { ref } from 'vue'
 
-  const TaskSelect = ref(Store.tasks[Store.TaskSelectPos])
-  const OptionsExtras = ref([])
+  const props = defineProps({
+    pos: String
+  })
 
-  if (!TaskSelect.value.subTasks)
-  	TaskSelect.value.subTasks = []
+	Store.TaskSelectPos = props.pos;
+
+  const TaskSelect = Store.tasks[Store.TaskSelectPos]
+  const OptionsExtras = ref([])
 
   if (Store.selectSpace === 'Historys') {
   	OptionsExtras.value = [{"name": "Gnosis, conocimiento para el despertar de la conciencia" }]

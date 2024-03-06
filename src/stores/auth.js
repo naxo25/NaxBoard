@@ -36,8 +36,12 @@ const getUsers = async email => {
     const findSpace = space.find(item => item === localStorage.identifier) 
 
     if (findSpace) {
-      console.log("findSpace", findSpace)
+      Store.loader = true
       getSpace(localStorage.identifier)
+
+      setTimeout(() => {
+        Store.loader = false
+      }, 300)
     } else {
       localStorage.identifier = ''
     }
@@ -88,7 +92,6 @@ export const onHandle = async () => {
 };
 
 export const getSpace = async identifier => {
-  Store.loader = true
   // router.push('/space/' + space.identifier)
   localStorage.identifier = identifier
 
@@ -112,7 +115,4 @@ export const getSpace = async identifier => {
   }
 
   Store.selectSpace = identifier
-  setTimeout(() => {
-    Store.loader = false
-  }, 250)
 }
