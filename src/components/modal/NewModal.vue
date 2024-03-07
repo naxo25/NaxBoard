@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
-                    <dl>
+                    <!-- <dl>
                         <dt class="sr-only">Role</dt>
                         <dd class="flex items-center mb-2 font-light text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4 mr-1.5 text-gray-400 dark:text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path></svg>
@@ -36,10 +36,17 @@
                         <dd class="mb-4 font-medium text-gray-900 sm:mb-5 dark:text-white">92 Miles Drive, Newark, NJ 07103, California, United States of America</dd>
                         <dt class="mb-2 leading-none text-gray-500 dark:text-gray-400">Phone Number</dt>
                         <dd class="font-medium text-gray-900 dark:text-white">+1234 567 890 / +12 345 678 </dd>
-                    </dl>
+                    </dl> -->
                     <dl>
-                        <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Descripción</dt>
-                        <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Título</dd>
+                        <dt class="mb-2 leading-none text-gray-500 dark:text-gray-400">Tarea</dt>
+                        <input v-model="item.name" required placeholder='Escribe un título para la tarea' class="text-sm font-semibold text-gray-900 mb-4 dark:text-white border-gray-200 text-gray-900 bg-transparent rounded-lg block w-full dark:border-gray-400 dark:placeholder-gray-400 outline-none">
+                        <!-- <dd class="mb-4 font-medium text-gray-900 sm:mb-5 dark:text-white"></dd> -->
+
+                        <dt class="mb-2 leading-none text-gray-500 dark:text-gray-400">Descripción</dt>
+                        <textarea rows='5' class="truncate whitespace-pre-line text-xs text-gray-700 dark:text-white w-full  border-0 bg-transparent outline-none h-auto dark:placeholder-gray-400" placeholder="Escribe una descripción aquí" data-dl-input-translation="true" v-model='item.desc'>
+                        </textarea>
+                        <!-- <dd class="mb-4 font-medium text-gray-900 sm:mb-5 dark:text-white"></dd> -->
+
                         <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Social</dt>
                         <dd class="inline-flex items-center space-x-1">
                             <a href="#" class="p-2 text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700">
@@ -59,9 +66,9 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-3 sm:space-x-4">
-                        <button type="button" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                        <button @click='addTask(item)' type="button" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                             <svg aria-hidden="true" class="w-5 h-5 mr-1 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                            Edit
+                            Add
                         </button>               
                         <button type="button" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                             Preview
@@ -78,10 +85,13 @@
 </template>
 
 <script setup>
+    import { ref } from 'vue'
   import Store from '@/stores/store.js'
-  const props = defineProps({
-    textoModal: Array
-})
+  import { addTask } from '@/stores/actions'
+  const item = ref({
+    name: '',
+    desc: ''
+  })
 
   const emit = defineEmits(['changeShow']);
 </script>

@@ -25,7 +25,7 @@
 
 	<article v-else-if='mode === "edit"'>
 		<footer class="flex items-center justify-between">
-			<input :value="item.name" class="text-sm font-semibold text-gray-900 dark:text-white border-gray-200 text-gray-900 bg-transparent rounded-lg block w-full dark:border-gray-400 dark:placeholder-gray-400 outline-none">
+			<input v-model="item.name" class="text-sm font-semibold text-gray-900 dark:text-white border-gray-200 text-gray-900 bg-transparent rounded-lg block w-full dark:border-gray-400 dark:placeholder-gray-400 outline-none">
 			<div class="flex gap-x-2 items-center">
 				<!-- <p class="hidden lg:block truncate text-sm text-gray-600 dark:text-gray-400"><time pubdate=""
 					datetime="2022-02-08" title="February 8th, 2022"> 01/03/2023 4:15 PM</time>
@@ -40,12 +40,16 @@
 			Editando
 		</p>
 
-		<textarea rows='5' class="truncate whitespace-pre-line text-xs text-gray-700 dark:text-white w-full  border-0 bg-transparent outline-none h-auto dark:placeholder-gray-400" placeholder="Escribe una descripción aquí" data-dl-input-translation="true" :value='item.desc'>
+		<textarea rows='5' class="truncate whitespace-pre-line text-xs text-gray-700 dark:text-white w-full  border-0 bg-transparent outline-none h-auto dark:placeholder-gray-400" placeholder="Escribe una descripción aquí" data-dl-input-translation="true" v-model='item.desc'>
 		</textarea>
+
+		<button class='inline-flex items-center p-2 px-3 text-sm font-medium text-center text-base text-gray-300 bg-white rounded-lg hover:bg-sky-100 focus:ring-4 focus:outline-none focus:ring-sky-50 dark:bg-sky-800 dark:hover:bg-sky-700 dark:hover:text-gray-200 dark:focus:ring-sky-600' @click='updateTasks(item)'>Actualizar</button>
 	</article>
 </template>
 
 <script setup>
+	import { updateTasks } from '@/stores/actions'
+
   const props = defineProps({
     mode: String,
     item: Array,
