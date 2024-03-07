@@ -75,9 +75,10 @@
 						{{ Store.tasks[Store.TaskSelectPos].desc }}
 					</p>
 
-					<div v-for="item, pos in [...Store.tasks[Store.TaskSelectPos]?.subTasks || [], ...OptionsExtras]" class="mb-5" @click="openTask(pos)">
+					<div v-for="item, pos in [...Store.tasks[Store.TaskSelectPos]?.subTasks || [], ...OptionsExtras]" class="mb-5">
 						<Task
 							@changeShow="position = ''"
+							@openTask='openTask(pos)'
 							:item
 							:mode="position === pos ? 'edit' : 'show'"
 							@cp='cp($event)'
@@ -136,7 +137,7 @@
   const OptionsExtras = ref([])
 
   if (Store.selectSpace === 'Historys') {
-  	OptionsExtras.value = [{"name": "Gnosis, conocimiento para el despertar de la conciencia" }]
+  	OptionsExtras.value = [{ "name": "Gnosis, conocimiento para el despertar de la conciencia", "noEdit": true }]
   }
 
   const openTask = pos => {

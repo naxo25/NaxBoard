@@ -6,7 +6,7 @@
                 <!-- Modal header -->
                 <div class="flex justify-between mb-4 rounded-t sm:mb-5">
                     <div class="flex items-center">
-                        <img class="w-12 h-12 mr-2 rounded-full sm:mr-4" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png" alt="Helene avatar">
+                        <img class="w-12 h-12 mr-2 rounded-full sm:mr-4" src="https://nacholabraweb.000webhostapp.com/ico.png" alt="naxIco">
                         <div>
                             <h3 class="text-lg font-bold text-gray-900 md:text-xl dark:text-white">
                                 Nueva subtarea en

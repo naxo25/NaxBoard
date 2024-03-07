@@ -1,14 +1,17 @@
 <template>
-	<article v-if='mode === "show"'>
+	<span v-if='item.noEdit' class="mb-6 text-xs text-gray-900 dark:text-white">
+		Otros
+	</span>
+	<article v-if='mode === "show"' @click="!item.noEdit && emit('openTask')">
 		<footer class="flex items-center justify-between mb-2">
 			<p class="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
 				{{ item.name }}
 			</p>
 			<div class="flex gap-x-2 items-center">
-				<p class="hidden lg:block text-sm text-gray-600 dark:text-gray-400"><time pubdate=""
+				<p v-if='!item.noEdit' class="hidden lg:block text-sm text-gray-600 dark:text-gray-400"><time pubdate=""
 					datetime="2022-02-08" title="February 8th, 2022"> 01/03/2023 4:15 PM</time>
 				</p>
-				<button class="inline-flex items-center p-2 text-sm font-medium text-center text-sky-500 bg-white rounded-lg hover:bg-sky-100 focus:ring-4 focus:outline-none focus:ring-sky-50 dark:bg-sky-800 dark:hover:bg-sky-700 dark:hover:text-sky-300 dark:focus:ring-sky-600"
+				<button v-if='!item.noEdit' class="inline-flex items-center p-2 text-sm font-medium text-center text-sky-500 bg-white rounded-lg hover:bg-sky-100 focus:ring-4 focus:outline-none focus:ring-sky-50 dark:bg-sky-800 dark:hover:bg-sky-700 dark:hover:text-sky-300 dark:focus:ring-sky-600"
 				type="button">
 				<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg>
 			</button>
