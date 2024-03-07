@@ -91,7 +91,7 @@ export const onHandle = async () => {
   })
 };
 
-export const getSpace = async identifier => {
+export const getSpace = async (identifier, push) => {
   // router.push('/space/' + space.identifier)
   localStorage.identifier = identifier
 
@@ -115,4 +115,5 @@ export const getSpace = async identifier => {
   }
 
   Store.selectSpace = identifier
+  push && router.push("/");
 }

@@ -2,7 +2,7 @@
 	import subTask from '../components/subTask.vue';
 	// import Aside from '../components/Aside.vue';
 	// import Statistics from '../components/Statistics.vue';
-	import Card from '../components/Card.vue';
+	// import Card from '../components/Card.vue';
 	// import Carrousel from '../components/Carrousel.vue';
 	const props = defineProps({
 	  pos: String
@@ -15,9 +15,9 @@
 		<div id="main-content" class="relative w-full h-full overflow-y-auto lg:ml-64 pt-10 min-h-screen">
 			<div class="px-2 pt-11 2xl:px-0">
 				<div class="px-2">
-					<div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
+					<div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-2">
 						<subTask :pos />
-						<Card />
+						<!-- <Card /> -->
 						<!-- <Aside /> -->
 					</div>
 					<div class='grid grid-cols-1 my-4 xl:grid-cols-2 xl:gap-4'>

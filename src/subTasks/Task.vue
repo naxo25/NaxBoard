@@ -43,10 +43,10 @@
 			Editando
 		</p>
 
-		<textarea rows='5' class="truncate whitespace-pre-line text-xs text-gray-700 dark:text-white w-full  border-0 bg-transparent outline-none h-auto dark:placeholder-gray-400" placeholder="Escribe una descripción aquí" data-dl-input-translation="true" v-model='item.desc'>
+		<textarea rows='8' class="truncate whitespace-pre-line text-xs text-gray-700 dark:text-white w-full  border-0 bg-transparent outline-none h-auto dark:placeholder-gray-400" placeholder="Escribe una descripción aquí" data-dl-input-translation="true" v-model='item.desc'>
 		</textarea>
 
-		<button class='inline-flex items-center p-2 px-3 text-sm font-medium text-center text-base text-gray-300 bg-white rounded-lg hover:bg-sky-100 focus:ring-4 focus:outline-none focus:ring-sky-50 dark:bg-sky-800 dark:hover:bg-sky-700 dark:hover:text-gray-200 dark:focus:ring-sky-600' @click='updateTasks(item)'>Actualizar</button>
+		<button class='inline-flex items-center p-2 px-3 text-sm font-medium text-center text-base text-gray-300 bg-white rounded-lg hover:bg-sky-100 focus:ring-4 focus:outline-none focus:ring-sky-50 dark:bg-sky-800 dark:hover:bg-sky-700 dark:hover:text-gray-200 dark:focus:ring-sky-600' @click='updateTasks(item), emit("changeShow")'>Actualizar</button>
 	</article>
 </template>
 

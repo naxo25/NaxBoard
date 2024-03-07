@@ -84,31 +84,7 @@
 							@cp='cp($event)'
 						/>
 					</div>
-
-					<div class="flex lg:pl-1 items-center mb-5">
-						<textarea id="chat" rows="1"
-							class="block mr-4 p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-							placeholder="Agregar subtarea"></textarea>
-							<button type="submit"
-							class="inline-flex justify-center p-2 rounded-lg cursor-pointer text-primary-600 hover:bg-primary-100 dark:text-primary-500 dark:hover:bg-gray-600"><svg
-								aria-hidden="true" class="w-6 h-6 rotate-90" fill="currentColor" viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg">
-								<path
-									d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z">
-								</path>
-							</svg><span class="sr-only">Send message</span>
-						</button>
-					</div>
 				</article>
-
-				<form class="mb-6">
-					<div class="py-2 px-4 mb-4 rounded-lg rounded-t-lg border border-gray-200 dark:border-gray-700">
-						<label for="comment" class="sr-only">Your comment</label><textarea id="comment" rows="6" class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 bg-transparent focus:outline-none dark:text-white dark:placeholder-gray-400"
-							placeholder="Write a comment..." required=""></textarea>
-						</div><button type="submit"
-						class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-						Agregar tarea </button>
-				</form>
 			</div>
 		</section>
 	</article>
