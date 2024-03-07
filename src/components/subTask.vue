@@ -1,5 +1,5 @@
 <template>
-	<article class="px-4 rounded-lg 2xl:col-span-2 sm:px-6">
+	<article class="px-2 rounded-lg 2xl:col-span-2 sm:px-6">
 		<div class="flex mb-4 flex-col">
 			<div class="flex w-full items-center justify-between lg:justify-start space-x-3 text-gray-500 dark:text-gray-400 text-base mb-2 lg:mb-0">
 				<span>
@@ -17,7 +17,8 @@
 					<div class="not-format">
 						<button data-tooltip-target="tooltip-link"
 							class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-							type="button"><svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
+							type="button">
+							<svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
 								xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 19 19">
 								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 									d="M11.013 7.962a3.519 3.519 0 0 0-4.975 0l-3.554 3.554a3.518 3.518 0 0 0 4.975 4.975l.461-.46m-.461-4.515a3.518 3.518 0 0 0 4.975 0l3.553-3.554a3.518 3.518 0 0 0-4.974-4.975L10.3 3.7">
@@ -44,14 +45,20 @@
 
 		<section class="antialiased">
 			<div class="py-1">
-				<div class="flex justify-between items-center">
+				<div @click='openTask(Store.tasks[Store.TaskSelectPos])' class="flex justify-between items-center">
 					<h2 class="text-lg lg:text-2xl line-clamp-1 font-bold text-gray-900 dark:text-white">
 						{{ Store.tasks[Store.TaskSelectPos].name }}
 					</h2>
-					<button @click='cp(Store.tasks[Store.TaskSelectPos])' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
-					type="button">
-					<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path></svg>
-				</button>
+					<div class='flex gap-x-2'>
+						<button @click='showModal=true' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+						type="button">
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 8h-14" /><path d="M5 12h9" /><path d="M11 16h-6" /><path d="M15 16h6" /><path d="M18 13v6" /></svg>
+						</button>
+						<button @click='cp(Store.tasks[Store.TaskSelectPos])' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+						type="button">
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path></svg>
+					</button>
+				</div>
 			</div><!--[-->
 
 			<p class="text-sm text-gray-600 dark:text-gray-400">
@@ -68,25 +75,14 @@
 						{{ Store.tasks[Store.TaskSelectPos].desc }}
 					</p>
 
-					<article v-for="item in [...Store.tasks[Store.TaskSelectPos]?.subTasks || [], ...OptionsExtras]" class="lg:pl-1 mb-5">
-						<footer class="flex items-center justify-between mb-2">
-							<p class="inline-flex items-center mr-3 text-sm font-semibold text-gray-900 dark:text-white">
-								{{ item.name }}
-							</p>
-							<div class="flex gap-x-2 items-center">
-								<p class="hidden lg:block text-sm text-gray-600 dark:text-gray-400"><time pubdate=""
-									datetime="2022-02-08" title="February 8th, 2022"> 01/03/2023 4:15 PM</time>
-								</p>
-							<button @click='cp(item)' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
-								type="button">
-								<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path></svg>
-							</button>
-							</div>
-						</footer>
-						<p class="mb-4 text-gray-900 dark:text-white">
-							{{ item.desc }}
-						</p>
-					</article>
+					<div v-for="item, pos in [...Store.tasks[Store.TaskSelectPos]?.subTasks || [], ...OptionsExtras]" class="mb-5" @click="openTask(pos)">
+						<Task
+							@changeShow="position = ''"
+							:item
+							:mode="position === pos ? 'edit' : 'show'"
+							@cp='cp($event)'
+						/>
+					</div>
 
 					<div class="flex lg:pl-1 items-center mb-5">
 						<textarea id="chat" rows="1"
@@ -115,12 +111,20 @@
 			</div>
 		</section>
 	</article>
+
+	<Modal v-show='showModal' :textoModal @changeShow='showModal=false' />
 </template>
 
 <script setup>
+	import Modal from '@/components/modal/NewModal.vue'
+	import Task from '@/subTasks/Task.vue'
 	import Toastify from 'toastify-js'
   import Store from '../stores/store.js'
   import { ref } from 'vue'
+
+  const showModal = ref(false)
+  const textoModal = ref({})
+  const position = ref('')
 
   const props = defineProps({
     pos: String
@@ -133,6 +137,10 @@
 
   if (Store.selectSpace === 'Historys') {
   	OptionsExtras.value = [{"name": "Gnosis, conocimiento para el despertar de la conciencia" }]
+  }
+
+  const openTask = pos => {
+  	position.value = pos
   }
 
   const cp = item => {

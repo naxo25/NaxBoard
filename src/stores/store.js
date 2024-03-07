@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 const store = reactive({
   spaces: [],
-  loader: true,
+  loader: false,
   tasks: [],
   user: {
     image: './noimg.webp'
