@@ -188,7 +188,7 @@
 </template>
 
 <script setup>
-  import Store from '../stores/store.js'
+  import Store from '@/stores/store.js'
   import { getSpace } from '@/stores/auth'
   import { getSubTasks } from '@/stores/test'
   import { ref } from 'vue'

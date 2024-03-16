@@ -19,8 +19,6 @@ export const addTask = async (task, mode) => {
     Store.tasks[Store.TaskSelectPos].subTasks.push({ ...task })
   }
 
-  console.log("Store.tasks", Store.tasks)
-
   const { data, error } = await supabase
     .from('space')
     .update({ tasks: Store.tasks })
@@ -33,13 +31,11 @@ export const addTask = async (task, mode) => {
   Notification('Se ha agregado la tarea.')
 }
 
-export const updateTasks = async task => {
+
+export const updateTasks = async () => {
 
   if (!Store.tasks[Store.TaskSelectPos].subTasks)
     Store.tasks[Store.TaskSelectPos].subTasks = []
-
-  // console.log("task", task)
-  // console.log("Store.tasks", Store.tasks)
 
   const { data, error } = await supabase
     .from('space')
@@ -51,4 +47,23 @@ export const updateTasks = async task => {
     Notification('Ha ocurrido un error', error)
 
   Notification('Se ha actualizado la tarea.')
+}
+
+
+export const removeTask = (mode, position) => {
+
+  if (!confirm('¿Está seguro que quiere eliminar este elemento?'))
+    return
+
+  if (mode === 'Task') {
+    router.back()
+    Store.tasks.splice(Store.TaskSelectPos, 1)
+  }
+
+  else if (mode === 'subTask')
+    Store.tasks[Store.TaskSelectPos].subTasks.splice(position, 1)
+
+  setTimeout(() => {
+    updateTasks()
+  }, 50)
 }

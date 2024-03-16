@@ -25,6 +25,7 @@
 								</path>
 							</svg>
 						</button>
+
 						<button data-tooltip-target="tooltip-save"
 							class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
 							type="button"><svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -32,6 +33,13 @@
 								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 									d="m13 19-6-5-6 5V2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17Z"></path>
 							</svg>
+						</button>
+
+						<button @click='removeTask("Task")' data-tooltip-target="tooltip-save"
+							class="inline-flex items-center p-2 text-sm font-medium text-center text-red-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+							type="button">
+							<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  class="w-5 h-5"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 6a1 1 0 0 1 .117 1.993l-.117 .007h-.081l-.919 11a3 3 0 0 1 -2.824 2.995l-.176 .005h-8c-1.598 0 -2.904 -1.249 -2.992 -2.75l-.005 -.167l-.923 -11.083h-.08a1 1 0 0 1 -.117 -1.993l.117 -.007h16z" /><path d="M14 2a2 2 0 0 1 2 2a1 1 0 0 1 -1.993 .117l-.007 -.117h-4l-.007 .117a1 1 0 0 1 -1.993 -.117a2 2 0 0 1 1.85 -1.995l.15 -.005h4z" /></svg>
+							<span class='hidden md:block pl-1.5'>Eliminar Tarea</span>
 						</button>
 
 						<button @click="$router.back" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -50,7 +58,7 @@
 						{{ Store.tasks[Store.TaskSelectPos].name }}
 					</h2>
 					<div class='flex gap-x-2'>
-						<button @click='showModal=true' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+						<button @click='showModal=true' class="inline-flex items-center p-2 text-sm font-medium text-center bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
 						type="button">
 						<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 8h-14" /><path d="M5 12h9" /><path d="M11 16h-6" /><path d="M15 16h6" /><path d="M18 13v6" /></svg>
 						</button>
@@ -79,6 +87,7 @@
 						<Task
 							@changeShow="position = ''"
 							@openTask='openTask(pos)'
+							@removeTask='removeTask("subTask", pos)'
 							:item
 							:mode="position === pos ? 'edit' : 'show'"
 							@cp='cp($event)'
@@ -89,14 +98,15 @@
 		</section>
 	</article>
 
-	<Modal v-show='showModal' mode='SubTask' @changeShow='showModal=false' />
+	<Modal v-if='showModal' mode='SubTask' @changeShow='showModal=false' />
 </template>
 
 <script setup>
 	import Modal from '@/components/modal/NewModal.vue'
-	import Task from '@/subTasks/Task.vue'
+	import Task from '@/Tasks/task.vue'
 	import Toastify from 'toastify-js'
-  import Store from '../stores/store.js'
+  import Store from '@/stores/store.js'
+  import { removeTask } from '@/stores/actions.js'
   import { ref } from 'vue'
 
   const showModal = ref(false)

@@ -9,17 +9,11 @@ const routes = [
       { path: '/', component: () => import('@/home/Home.vue'),
         children: [
           { path: '/', component: () => import('@/pages/Spaces.vue') },
-          { path: '/Task', component: () => import('@/components/Tasks.vue') },
+          { path: '/Task', component: () => import('@/Tasks/tasks.vue') },
         ]
       },
       { path: '/Task/:pos', props: true, component: () => import('@/pages/Task.vue') },
 
-    ]
-  },
-
-  { path: '/home', component: () => import('@/pages/Home.vue'),
-    children: [
-      { path: '/home', component: () => import('@/components/Tasks.vue') },
     ]
   },
 

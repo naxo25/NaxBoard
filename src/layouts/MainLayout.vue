@@ -176,7 +176,7 @@
 </template>
 
 <script setup>
-	import Store from '../stores/store.js'
+	import Store from '@/stores/store.js'
 	import { signOut } from '@/stores/auth'
   import Menu from './Menu.vue'
 	import { ref } from 'vue'
