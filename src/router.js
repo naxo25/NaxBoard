@@ -6,17 +6,28 @@ const routes = [
   {
     path: '/', component: () => import('@/layouts/MainLayout.vue'),
     children: [
-      { path: '/', component: () => import('@/pages/Home.vue') },
+      { path: '/', component: () => import('@/home/Home.vue'),
+        children: [
+          { path: '/', component: () => import('@/pages/Spaces.vue') },
+          { path: '/Task', component: () => import('@/components/Tasks.vue') },
+        ]
+      },
       { path: '/Task/:pos', props: true, component: () => import('@/pages/Task.vue') },
 
     ]
   },
 
-  { path: '/test/', component: () => import('@/pages/test.vue') },
+  { path: '/home', component: () => import('@/pages/Home.vue'),
+    children: [
+      { path: '/home', component: () => import('@/components/Tasks.vue') },
+    ]
+  },
+
+  { path: '/test/', component: () => import('@/pages/test3.vue') },
   { path: '/test/:pos', props: true, component: () => import('@/pages/test.vue') },
   {
     path: '/:catchAll(.*)*',
-    component: () => import('@/views/404.vue')
+    component: () => import('@/pages/404.vue')
   }
 ]
 

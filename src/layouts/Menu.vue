@@ -76,7 +76,7 @@
 
 <script setup>
   import { getSpace, signOut } from '@/stores/auth.js'
-	import Store from '../stores/store.js'
+	import Store from '@/stores/store.js'
 	import { ref } from 'vue'
 	
 	const props = defineProps({

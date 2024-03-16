@@ -2,19 +2,24 @@ import { router } from '@/router'
 import { supabase } from './supabase.js'
 import Store from './store.js'
 
-export const getSubTasks = position => {
+export const getSubTasks = (position, route) => {
   Store.TaskSelectPos = position
-  router.push('/task/' + position)
+  router.push(`/${route}/` + position)
 }
 
-export const addTask = async task => {
+export const addTask = async (task, mode) => {
 
-  if (!Store.tasks[Store.TaskSelectPos].subTasks)
-    Store.tasks[Store.TaskSelectPos].subTasks = []
+  if (mode === 'Task')
+    Store.tasks[Store.tasks.length] = { ...task, subTasks: [] };
 
-  // console.log("task", task)
-  Store.tasks[Store.TaskSelectPos].subTasks.push({ ...task })
-  // console.log("Store.tasks", Store.tasks)
+  if (mode === 'SubTask') {
+    if (!Store.tasks[Store.TaskSelectPos].subTasks)
+      Store.tasks[Store.TaskSelectPos].subTasks = []
+
+    Store.tasks[Store.TaskSelectPos].subTasks.push({ ...task })
+  }
+
+  console.log("Store.tasks", Store.tasks)
 
   const { data, error } = await supabase
     .from('space')

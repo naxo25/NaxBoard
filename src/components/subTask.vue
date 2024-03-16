@@ -54,7 +54,7 @@
 						type="button">
 						<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 8h-14" /><path d="M5 12h9" /><path d="M11 16h-6" /><path d="M15 16h6" /><path d="M18 13v6" /></svg>
 						</button>
-						<button @click='cp(Store.tasks[Store.TaskSelectPos])' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
+						<button @click='cp(Store.tasks[Store.TaskSelectPos], false)' class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-300 dark:focus:ring-gray-600"
 						type="button">
 						<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path></svg>
 					</button>
@@ -67,7 +67,7 @@
 				</time>
 			</p>
 
-				<article class="py- cursor-pointer text-base rounded-lg lg:ml-1">
+				<article class="py- text-base rounded-lg lg:ml-1">
 					<footer class="flex justify-between items-center mb-2">
 					</footer>
 
@@ -89,7 +89,7 @@
 		</section>
 	</article>
 
-	<Modal v-show='showModal' :textoModal @changeShow='showModal=false' />
+	<Modal v-show='showModal' mode='SubTask' @changeShow='showModal=false' />
 </template>
 
 <script setup>
@@ -113,16 +113,16 @@
   const OptionsExtras = ref([])
 
   if (Store.selectSpace === 'Historys') {
-  	OptionsExtras.value = [{ "name": "Gnosis, conocimiento para el despertar de la conciencia", "noEdit": true }]
+  	OptionsExtras.value = [{ "name": '\n"Gnosis, conocimiento para el despertar de la conciencia"', "noEdit": 'Frase' }, { name: 'Inscripciones por whatsApp', noEdit: 'Otro' }]
   }
 
   const openTask = pos => {
   	position.value = pos
   }
 
-  const cp = item => {
+  const cp = (item, copyDesc = true) => {
 		let desc = ''
-		item.desc?.split(/\r?\n/).forEach(item => desc += `\n${item}`)
+		copyDesc && item.desc?.split(/\r?\n/).forEach(item => desc += `\n${item}`)
 	  navigator.clipboard.writeText(`${item.name}${desc}`)
 	  Notification("Contenido copiado al portapapeles.")
   }

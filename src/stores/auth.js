@@ -115,5 +115,5 @@ export const getSpace = async (identifier, push) => {
   }
 
   Store.selectSpace = identifier
-  push && router.push("/");
+  push && router.push("/Task");
 }
