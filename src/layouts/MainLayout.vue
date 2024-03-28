@@ -168,7 +168,7 @@
 	</nav>
 
 	<!-- Desktop -->
-	<Menu :showMenu @showMenuClick='showMenu = false' />
+	<MenuLayout :showMenu @showMenuClick='showMenu = false' />
 
 	<main class='lg:mr-10'>
 		<routerView/>
@@ -178,7 +178,7 @@
 <script setup>
 	import Store from '@/stores/store.js'
 	import { signOut } from '@/stores/auth'
-  import Menu from './Menu.vue'
+  import MenuLayout from './MenuLayout.vue'
 	import { ref } from 'vue'
 	import Toastify from 'toastify-js'
 	import "toastify-js/src/toastify.css"
