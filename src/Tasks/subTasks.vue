@@ -123,7 +123,10 @@
   const OptionsExtras = ref([])
 
   if (Store.selectSpace === 'Historys') {
-  	OptionsExtras.value = [{ "name": '\n"Gnosis, conocimiento para el despertar de la conciencia"', "noEdit": 'Frase' }, { name: 'Inscripciones por whatsApp', noEdit: 'Otro' }]
+  	OptionsExtras.value = [
+  		{ name: 'Inscripciones por whatsApp', noEdit: 'Otro' },
+  		{ "name": '\n"Gnosis, conocimiento para el despertar de la conciencia"', "noEdit": 'Frase' }
+  	]
   }
 
   const openTask = pos => {

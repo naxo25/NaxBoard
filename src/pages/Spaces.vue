@@ -21,7 +21,7 @@
               <article
                 v-for="space,pos in Store.spaces"
                 @click='getSpace(space.identifier, true);' class="pb-6 cursor-pointer w-auto text-base rounded-lg ml-1">
-                <li class='flex pl-3 rounded-lg items-center hover:bg-gray-100 dark:hover:bg-gray-700'>
+                <li class='flex -ml-2 pl-3 rounded-lg items-center hover:bg-gray-100 dark:hover:bg-gray-700'>
                 	
 									<img v-if='space.identifier' :src="space.logo || 'https://nacholabraweb.000webhostapp.com/ico.png'" class="w-6 h-6">
 									<a class="flex items-center p-2 text-base text-gray-900 transition duration-75 pl-4 group dark:text-gray-200">

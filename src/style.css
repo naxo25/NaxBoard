@@ -10,6 +10,10 @@ section {
   animation: animation .8s;
 }
 
+textarea {
+  field-sizing: content;
+}
+
 @keyframes animation {
   0% {
     opacity: .2;

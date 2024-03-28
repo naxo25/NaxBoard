@@ -10,10 +10,10 @@ const routes = [
         children: [
           { path: '/', component: () => import('@/pages/Spaces.vue') },
           { path: '/Task', component: () => import('@/Tasks/tasks.vue') },
+          { path: '/Tasks', component: () => import('@/pages/Tasks.vue') },
         ]
       },
       { path: '/Task/:pos', props: true, component: () => import('@/pages/Task.vue') },
-
     ]
   },
 

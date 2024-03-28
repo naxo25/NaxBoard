@@ -43,7 +43,7 @@
                         <!-- <dd class="mb-4 font-medium text-gray-900 sm:mb-5 dark:text-white"></dd> -->
 
                         <dt class="mb-2 leading-none text-gray-500 dark:text-gray-400">Descripción</dt>
-                        <textarea rows='5' class="truncate whitespace-pre-line text-xs text-gray-700 dark:text-white w-full  border-0 bg-transparent outline-none h-auto dark:placeholder-gray-400" placeholder="Escribe una descripción aquí" data-dl-input-translation="true" v-model='item.desc'>
+                        <textarea rows='10' class="truncate whitespace-pre-line text-xs text-gray-700 dark:text-white w-full  border-0 bg-transparent outline-none h-auto dark:placeholder-gray-400" placeholder="Escribe una descripción aquí" data-dl-input-translation="true" v-model='item.desc'>
                         </textarea>
                         <!-- <dd class="mb-4 font-medium text-gray-900 sm:mb-5 dark:text-white"></dd> -->
 

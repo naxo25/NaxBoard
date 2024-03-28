@@ -51,65 +51,33 @@
 								<path clip-rule="evenodd" fill-rule="evenodd" d="M4.606 12.97a.75.75 0 01-.134 1.051 2.494 2.494 0 00-.93 2.437 2.494 2.494 0 002.437-.93.75.75 0 111.186.918 3.995 3.995 0 01-4.482 1.332.75.75 0 01-.461-.461 3.994 3.994 0 011.332-4.482.75.75 0 011.052.134z"></path>
 								<path clip-rule="evenodd" fill-rule="evenodd" d="M5.752 12A13.07 13.07 0 008 14.248v4.002c0 .414.336.75.75.75a5 5 0 004.797-6.414 12.984 12.984 0 005.45-10.848.75.75 0 00-.735-.735 12.984 12.984 0 00-10.849 5.45A5 5 0 001 11.25c.001.414.337.75.751.75h4.002zM13 9a2 2 0 100-4 2 2 0 000 4z"></path>
 							</svg>
-							Tips to grow
+							Tareas a resolver
 						</div>
-						<p class="mb-4 text-gray-500 dark:text-gray-400">
-							Marketing, sales &amp; business growth for small business. Improve
-							your marketing &amp; promotion results - and grow your sales!
-						</p>
-						<p class="mb-4 text-lg font-medium text-gray-900 dark:text-white">
-							What you'll learn:
-						</p>
 						<ul role="list" class="pl-2 mb-4 space-y-3 text-gray-500 list-disc dark:text-gray-400">
-							<li class="flex space-x-2">
+							<li @click='item.type === "a" ? setA(item) : ""' v-for="item in items" class="flex space-x-2">
 								<!-- Icon -->
 								<svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 									<path clip-rule="evenodd" fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"></path>
 								</svg>
-								<span class="leading-tight">Dynamic reports and dashboards</span>
+								<span class="leading-tight">
+									{{ item.name }}
+								</span>
 							</li>
+
 							<li class="flex space-x-2">
 								<!-- Icon -->
 								<svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 									<path clip-rule="evenodd" fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"></path>
 								</svg>
-								<span class="leading-tight">Learn from competitors about what to do, and not to do</span>
-							</li>
-							<li class="flex space-x-2">
-								<!-- Icon -->
-								<svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-									<path clip-rule="evenodd" fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"></path>
-								</svg>
-								<span class="leading-tight">Take their business to the next level</span>
-							</li>
-							<li class="flex space-x-2">
-								<!-- Icon -->
-								<svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-									<path clip-rule="evenodd" fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"></path>
-								</svg>
-								<span class="leading-tight">Limitless business automation</span>
-							</li>
-							<li class="flex space-x-2">
-								<!-- Icon -->
-								<svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-									<path clip-rule="evenodd" fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"></path>
-								</svg>
-								<span class="leading-tight">Build relationships with other businesses to co-promote</span>
-							</li>
-							<li class="flex space-x-2">
-								<!-- Icon -->
-								<svg class="flex-shrink-0 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-									<path clip-rule="evenodd" fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"></path>
-								</svg>
-								<span class="leading-tight">Make their customers feel loved and apprecaited</span>
+								<input v-model='newTask.name' @keydown.enter='addTask' class="input leading-tight bg-transparent outline-none" placeholder='Escribe el texto'>
 							</li>
 						</ul>
-						<a href="#" class="inline-flex items-center p-2 font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
-							Let's start
+						<button @click="condition = true; document.querySelector('.input').focus()" class="inline-flex items-center p-2 font-medium rounded-lg text-primary-700 hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700">
+							Add Task
 							<svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 								<path clip-rule="evenodd" fill-rule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z"></path>
 							</svg>
-						</a>
+						</button>
 					</div>
 					<div class="duration-700 ease-in-out   absolute inset-0 transition-transform transform z-10 translate-x-full" data-carousel-item="">
 						<div class="flex items-center mb-4 text-lg font-medium text-purple-600">
@@ -174,3 +142,24 @@
 			</div>
 		</div>
 </template>
+
+<script setup>
+  import { ref } from 'vue'
+  const condition = ref(false)
+  const items = ref([{},{},{}])
+
+  const newTask = ref({
+  	name,
+  	type: 'a'
+  })
+
+  const addTask = (value) => {
+  	items.value.push({ ...newTask.value })
+  	newTask.value.name = ''
+  }
+
+  const setA = item => {
+    location.href = item.type
+    console.log("item.type", item.type)
+  }
+</script>
